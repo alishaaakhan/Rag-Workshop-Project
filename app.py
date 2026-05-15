@@ -151,5 +151,4 @@ st.markdown(
     '<div class="footer">Developed for Build with RAG: AI Workshop & Competition 🚀</div>',
     unsafe_allow_html=True
 )
-"
 )
