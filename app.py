@@ -21,7 +21,7 @@ st.markdown("""
     font-weight: bold;
     text-align: center;
     color: white;
-}
+    }
 .subtitle {
     text-align: center;
     font-size: 18px;
@@ -51,7 +51,7 @@ with col1:
     st.markdown('<div class="custom-box">📄 Upload WHO guidelines, medical encyclopedias, FAQ documents, or health awareness PDFs and ask intelligent questions.</div>', unsafe_allow_html=True)
 
 with col2:
-st.markdown('<div class="custom-box">⚡ Gemini API + LangChain + FAISS + Streamlit</div>', unsafe_allow_html=True)
+    st.markdown('<div class="custom-box">⚡ Gemini API + LangChain + FAISS + Streamlit</div>', unsafe_allow_html=True)
 
 GOOGLE_API_KEY = "YOUR_GEMINI_API_KEY"
 os.environ["GOOGLE_API_KEY"] = GOOGLE_API_KEY
@@ -75,7 +75,7 @@ def get_text_chunks(text):
     )
     chunks = text_splitter.split_text(text)
     return chunks
-def get_vector_store(text_chunks):
+    def get_vector_store(text_chunks):
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
@@ -102,7 +102,7 @@ def user_input(user_question):
     embeddings = HuggingFaceEmbeddings(
         model_name="sentence-transformers/all-MiniLM-L6-v2"
     )
-new_db = FAISS.load_local(
+    new_db = FAISS.load_local(
         "faiss_index",
         embeddings,
         allow_dangerous_deserialization=True
@@ -116,7 +116,8 @@ new_db = FAISS.load_local(
         input_documents=docs,
         question=user_question
     )
-st.markdown('## 🤖 AI Response')
+
+    st.markdown('## 🤖 AI Response')
     st.write(response)
 
 
@@ -126,7 +127,6 @@ pdf_docs = st.file_uploader(
     "Upload Health FAQ Documents",
     accept_multiple_files=True
 )
-
 if st.button("Submit & Process"):
     with st.spinner("Processing..."):
         raw_text = get_pdf_text(pdf_docs)
@@ -141,10 +141,15 @@ user_question = st.text_input("Ask a Health-related Question")
 
 if user_question:
     user_input(user_question)
+
 st.markdown("---")
 st.warning(
-    "This project is for educational purposes only and does not replace professional medical advice.")
+    "This project is for educational purposes only and does not replace professional medical advice."
+)
 
-st.markdown('<div class="footer">Developed for Build with RAG: AI Workshop & Competition 🚀</div>', unsafe_allow_html=True)
-#"
+st.markdown(
+    '<div class="footer">Developed for Build with RAG: AI Workshop & Competition 🚀</div>',
+    unsafe_allow_html=True
+)
+"
 )
